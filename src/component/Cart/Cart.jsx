@@ -9,13 +9,19 @@ const Cart = ({cart}) => {
     let totalShipping=0;
     let tax= 0;
     let grandTotal=0;
-    for(const ikbal of cart ){
-        // console.log(ikbal);
-        totalPrice=totalPrice+ikbal.price;
-        totalShipping=totalShipping+ikbal.shipping;
-        tax = totalPrice*(7/100);
-        grandTotal = totalPrice+totalShipping+tax;
+    let quantity=0;
+    for(const product of cart ){
+        // console.log(product);
+        // if(product.quantity ===0){
+        //     product.quantity =1
+        // }
+        // product.quantity = product.quantity || 1
+        totalPrice= totalPrice + product.price * product.quantity;
+        totalShipping=totalShipping+product.shipping;
+        quantity=quantity+product.quantity
     }
+    tax = totalPrice*7/100;
+    grandTotal = totalPrice+totalShipping+tax;
 // option3: const Cart = (props) => {
 
     // option 1:  const cart = props.cart
@@ -23,7 +29,7 @@ const Cart = ({cart}) => {
     return (
         <div className='cart-bg'>
              <h3><u>Order Summary</u></h3>
-                <p>Selected items:{cart.length}</p>
+                <p>Selected items:{quantity}</p>
                 <p>Total Price:${totalPrice}</p>
                 <p>Total Shipping Charge:${totalShipping}</p>
                 <p>Tax:${tax.toFixed(2)}</p>
