@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Children } from 'react';
 import './Cart.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+  import { faDeleteLeft, faTrash } from '@fortawesome/free-solid-svg-icons'
 
-const Cart = ({cart}) => {
+const Cart = ({cart,handleClearCart,children}) => {
 
         // console.log(cart);
     //for in loop used to see index num
@@ -34,6 +36,11 @@ const Cart = ({cart}) => {
                 <p>Total Shipping Charge:${totalShipping}</p>
                 <p>Tax:${tax.toFixed(2)}</p>
                 <h4>Grand Total:${grandTotal.toFixed(2)}</h4>
+                <button onClick={handleClearCart} className='btn-clear'>
+                    <span>Clear cart</span>
+                <FontAwesomeIcon icon={faTrash} />
+                </button>
+                {children}
         </div>
     );
 };

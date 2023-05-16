@@ -5,3 +5,17 @@
     position: sticky;
     top: 10px;
 }
+
+.btn-clear{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10px auto;
+  background-color: rgb(227, 78, 78);
+  border-radius: 4px;
+  color: #fff;
+}
+
+.btn-clear:hover{
+  background-color: red;
+}
